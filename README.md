@@ -1,4 +1,6 @@
-# SensorProjectRESTApi
+# WeatherMeasurements
+
+This is a simulation of sending and receiving weather measurements.
 
 There is a weather sensor that measures the temperature of the ambient air and determines if it is raining.
 Our application accepts data in JSON format to register a new sensor and record new measurements and can send all the measurements taken and the number of rainy days in JSON format.
