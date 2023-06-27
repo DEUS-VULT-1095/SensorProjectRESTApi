@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Random;
 
 public class Client {
-    private static String sensorName = "T-800";
+    private static String sensorName = "T 800";
 
     public static void main(String[] args) {
         SensorDTO sensor = registerNewSensor(sensorName);
