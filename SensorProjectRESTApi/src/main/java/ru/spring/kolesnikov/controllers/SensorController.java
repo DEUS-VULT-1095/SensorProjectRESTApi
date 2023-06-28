@@ -16,6 +16,7 @@ import ru.spring.kolesnikov.util.SensorNotCreatedException;
 import ru.spring.kolesnikov.util.SensorValidator;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @RestController
@@ -52,7 +53,7 @@ public class SensorController {
     private ResponseEntity<ErrorResponse> handleException(SensorNotCreatedException e) {
         ErrorResponse response = new ErrorResponse(
                 e.getMessage(),
-                LocalDateTime.now()
+                new Date()
         );
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }

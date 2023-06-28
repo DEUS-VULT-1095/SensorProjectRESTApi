@@ -8,23 +8,35 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.TestPropertySource;
+import ru.spring.kolesnikov.models.Sensor;
+import ru.spring.kolesnikov.repositories.SensorRepository;
+import ru.spring.kolesnikov.services.SensorService;
 import ru.spring.kolesnikov.util.SensorNotCreatedException;
 
 import java.util.List;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
-        )
-//@TestPropertySource
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SensorControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
+    @Autowired
+    private SensorService sensorService;
+    @Autowired
+    private SensorRepository sensorRepository;
+
+    @AfterEach
+    void afterEach() {
+        Sensor sensor = sensorService.findByName("T-1000").get();
+        sensorRepository.delete(sensor);
+    }
 
     @Test
     void testRegisterSensor_whenValidDetailsProvided_returnsHttpStatusCodeOK() throws JSONException {
         // Arrange
         JSONObject sensorDTOJason = new JSONObject();
         sensorDTOJason.put("name", "T-1000");
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -35,10 +47,11 @@ public class SensorControllerIntegrationTest {
         // Assert
         Assertions.assertNotNull(response, "Response should not be null.");
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode(), "Http status code should be 200 OK.");
+        Assertions.assertNotNull(sensorService.findByName("T-1000").get(), "Sensor should not be null.");
     }
 
     @Test
-    @Disabled
+    @Disabled // Error
     void testRegisterSensor_whenProvidedExistingSensorDTO_thrownSensorNotCreatedException() throws JSONException {
         // Arrange
         JSONObject sensorDTOJason = new JSONObject();

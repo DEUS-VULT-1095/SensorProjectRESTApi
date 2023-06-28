@@ -14,11 +14,11 @@ public class Measurement {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "value")
-    @NotNull(message = "Value should not be empty")
+    @Column(name = "temperature")
+    @NotNull(message = "Temperature should not be empty")
     @Min(value = -100)
     @Max(value = 100)
-    private Float value;
+    private Float temperature;
     @Column(name = "raining")
     @NotNull(message = "Raining value should not be empty")
     private Boolean raining;
@@ -31,8 +31,8 @@ public class Measurement {
     public Measurement() {
     }
 
-    public Measurement(float value, boolean raining) {
-        this.value = value;
+    public Measurement(float temperature, boolean raining) {
+        this.temperature = temperature;
         this.raining = raining;
     }
 
@@ -44,12 +44,12 @@ public class Measurement {
         this.id = id;
     }
 
-    public Float getValue() {
-        return value;
+    public Float getTemperature() {
+        return temperature;
     }
 
-    public void setValue(Float value) {
-        this.value = value;
+    public void setTemperature(Float value) {
+        this.temperature = value;
     }
 
     public Boolean getRaining() {

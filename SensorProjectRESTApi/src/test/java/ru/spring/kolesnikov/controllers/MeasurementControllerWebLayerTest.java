@@ -5,16 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -23,11 +19,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import ru.spring.kolesnikov.dto.MeasurementDTO;
 import ru.spring.kolesnikov.dto.MeasurementsResponse;
-import ru.spring.kolesnikov.dto.SensorDTO;
 import ru.spring.kolesnikov.models.Measurement;
 import ru.spring.kolesnikov.models.Sensor;
 import ru.spring.kolesnikov.services.MeasurementService;
-import ru.spring.kolesnikov.util.ErrorMsgCreator;
 import ru.spring.kolesnikov.util.MeasurementNotAddedException;
 import ru.spring.kolesnikov.util.MeasurementValidator;
 
@@ -66,17 +60,17 @@ public class MeasurementControllerWebLayerTest {
         measurement1 = new Measurement();
         measurement1.setSensor(sensor);
         measurement1.setRaining(true);
-        measurement1.setValue(0.0f);
+        measurement1.setTemperature(0.0f);
 
         measurement2 = new Measurement();
         measurement2.setSensor(sensor);
         measurement2.setRaining(false);
-        measurement2.setValue(1.1f);
+        measurement2.setTemperature(1.1f);
 
         measurement3 = new Measurement();
         measurement3.setSensor(sensor);
         measurement3.setRaining(false);
-        measurement3.setValue(2.1f);
+        measurement3.setTemperature(2.1f);
 
 
         doNothing().when(measurementValidator).validate(any(Object.class), any(Errors.class));
@@ -139,11 +133,11 @@ public class MeasurementControllerWebLayerTest {
         Assertions.assertNotNull(measurementsResponse, "Measurements response should not be Null.");
         Assertions.assertEquals(3, measurementsResponse.getMeasurementDTOList().size(),
                 "Incorrect MeasurementDTOList().size().");
-        Assertions.assertEquals(measurement1.getValue(), measurementsResponse.getMeasurementDTOList().get(0).getValue(),
+        Assertions.assertEquals(measurement1.getTemperature(), measurementsResponse.getMeasurementDTOList().get(0).getTemperature(),
                 "Value incorrect.");
-        Assertions.assertEquals(measurement2.getValue(), measurementsResponse.getMeasurementDTOList().get(1).getValue(),
+        Assertions.assertEquals(measurement2.getTemperature(), measurementsResponse.getMeasurementDTOList().get(1).getTemperature(),
                 "Value incorrect.");
-        Assertions.assertEquals(measurement3.getValue(), measurementsResponse.getMeasurementDTOList().get(2).getValue(),
+        Assertions.assertEquals(measurement3.getTemperature(), measurementsResponse.getMeasurementDTOList().get(2).getTemperature(),
                 "Value incorrect.");
         Assertions.assertEquals(measurement1.getRaining(), measurementsResponse.getMeasurementDTOList().get(0).getRaining(),
                 "Raining incorrect.");

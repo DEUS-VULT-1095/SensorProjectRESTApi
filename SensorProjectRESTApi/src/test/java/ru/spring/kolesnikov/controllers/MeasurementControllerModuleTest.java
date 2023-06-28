@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +56,7 @@ public class MeasurementControllerModuleTest {
         measurementDTO = new MeasurementDTO();
         measurementDTO.setRaining(true);
         measurementDTO.setSensor(sensorDTO);
-        measurementDTO.setValue(0.0f);
+        measurementDTO.setTemperature(0.0f);
     }
 
     @Test
@@ -71,7 +70,7 @@ public class MeasurementControllerModuleTest {
         Assertions.assertNotNull(measurement, "Measurement should not be null.");
         Assertions.assertEquals(sensorDTO.getName(), measurement.getSensor().getName(),
                 "Sensor name incorrect.");
-        Assertions.assertEquals(measurementDTO.getValue(), measurement.getValue(),"Value incorrect.");
+        Assertions.assertEquals(measurementDTO.getTemperature(), measurement.getTemperature(),"Value incorrect.");
         Assertions.assertEquals(measurementDTO.getRaining(), measurement.getRaining(),
                 "Raining status incorrect.");
     }
@@ -101,7 +100,7 @@ public class MeasurementControllerModuleTest {
         Assertions.assertNotNull(measurementDTO, "MeasurementDTO should not be null.");
         Assertions.assertEquals(sensor.getName(), measurementDTO.getSensor().getName(),
                 "SensorDTO name incorrect.");
-        Assertions.assertEquals(measurement.getValue(), measurementDTO.getValue(),"Value incorrect.");
+        Assertions.assertEquals(measurement.getTemperature(), measurementDTO.getTemperature(),"Value incorrect.");
         Assertions.assertEquals(measurement.getRaining(), measurementDTO.getRaining(),
                 "Raining status incorrect.");
     }
@@ -132,6 +131,6 @@ public class MeasurementControllerModuleTest {
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode(),
                 "Http Status code should be BAD_REQUEST.");
         Assertions.assertEquals(ex.getMessage(), errorResponse.getMessage(), "Error message incorrect.");
-        Assertions.assertNotNull(errorResponse.getLocalDateTime(), "Local Date Time should not be null.");
+        Assertions.assertNotNull(errorResponse.getDateTime(), "Date Time should not be null.");
     }
 }

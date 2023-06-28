@@ -16,6 +16,7 @@ import ru.spring.kolesnikov.util.MeasurementNotAddedException;
 import ru.spring.kolesnikov.util.MeasurementValidator;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import static ru.spring.kolesnikov.util.ErrorMsgCreator.createErrorMsg;
@@ -69,7 +70,7 @@ public class MeasurementController {
     private ResponseEntity<ErrorResponse> handleException(MeasurementNotAddedException e) {
         ErrorResponse response = new ErrorResponse(
                 e.getMessage(),
-                LocalDateTime.now()
+                new Date()
         );
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

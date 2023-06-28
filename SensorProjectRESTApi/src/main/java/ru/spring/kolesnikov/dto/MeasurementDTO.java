@@ -9,18 +9,18 @@ public class MeasurementDTO {
     @NotNull(message = "Value should not be empty")
     @Min(value = -100)
     @Max(value = 100)
-    private Float value;
+    private Float temperature;
     @NotNull(message = "Raining value should not be empty")
     private Boolean raining;
     @NotNull
     private SensorDTO sensor;
 
-    public Float getValue() {
-        return value;
+    public Float getTemperature() {
+        return temperature;
     }
 
-    public void setValue(Float value) {
-        this.value = value;
+    public void setTemperature(Float temperature) {
+        this.temperature = temperature;
     }
 
     public Boolean getRaining() {

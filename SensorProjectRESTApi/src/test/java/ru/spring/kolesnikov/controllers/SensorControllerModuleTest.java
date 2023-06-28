@@ -46,7 +46,7 @@ public class SensorControllerModuleTest {
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode(),
                 "Http status code should be BAD_REQUEST.");
         Assertions.assertEquals(ex.getMessage(), errorResponse.getMessage(), "Incorrect error message.");
-        Assertions.assertNotNull(errorResponse.getLocalDateTime(), "Local Date Time should not be null.");
+        Assertions.assertNotNull(errorResponse.getDateTime(), "Date Time should not be null.");
     }
 
     @Test
