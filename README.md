@@ -37,3 +37,7 @@ Getting data on the client and getting a graph of temperatures:
 
 ![graph](https://github.com/DEUS-VULT-1095/SensorProjectRESTApi/assets/109753552/16975e19-017f-426c-ac15-6d62cf22c0eb)
 
+Module and integration tests have been added.
+In addition the validity of values for entities is checked.
+
+![tests](https://github.com/DEUS-VULT-1095/WeatherMeasurements/assets/109753552/ebd2923b-54f4-4de2-9cd7-eb1d3dc3befd)
