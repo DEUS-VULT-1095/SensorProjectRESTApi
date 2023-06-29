@@ -41,7 +41,7 @@ public class DataCapture {
             steps.add(i);
         }
 
-        List<Float> temperatures = measurementDTOList.stream().map(m -> m.getValue()).collect(Collectors.toList());
+        List<Float> temperatures = measurementDTOList.stream().map(m -> m.getTemperature()).collect(Collectors.toList());
 
         chart.addSeries("Temperature", steps, temperatures);
 

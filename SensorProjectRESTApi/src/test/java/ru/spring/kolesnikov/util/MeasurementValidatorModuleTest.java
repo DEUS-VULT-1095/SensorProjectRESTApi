@@ -28,12 +28,11 @@ public class MeasurementValidatorModuleTest {
     @BeforeEach
     void beforeEach() {
         Sensor sensor = new Sensor();
-        sensor.setName("Pro");
+        sensor.setName("TestName");
         measurement = new Measurement();
         measurement.setSensor(sensor);
         optionalSensor = Optional.of(sensor);
         bindingResult = Mockito.mock(BindingResult.class);
-        //doNothing().when(bindingResult).rejectValue(any(String.class), any(String.class), any(String.class));
     }
 
     @Test

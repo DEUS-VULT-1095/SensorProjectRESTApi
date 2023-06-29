@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.TestPropertySource;
 import ru.spring.kolesnikov.dto.MeasurementsResponse;
 import ru.spring.kolesnikov.models.Measurement;
 import ru.spring.kolesnikov.models.Sensor;
@@ -19,6 +20,7 @@ import ru.spring.kolesnikov.util.ErrorResponse;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestPropertySource(locations = "/application-test.properties")
 public class MeasurementControllerIntegrationTest {
 
     @Autowired
@@ -36,7 +38,7 @@ public class MeasurementControllerIntegrationTest {
     @BeforeEach
     void beforeEach() {
         sensor = new Sensor();
-        sensor.setName("Pro100");
+        sensor.setName("TestName");
         sensorService.save(sensor);
 
         measurement1 = new Measurement();
@@ -65,7 +67,7 @@ public class MeasurementControllerIntegrationTest {
         JSONObject sensorObject = new JSONObject();
         JSONObject measurementDTORequestJason = new JSONObject();
 
-        sensorObject.put("name", "Pro100");
+        sensorObject.put("name", "TestName");
         measurementDTORequestJason.put("temperature", "10.1");
         measurementDTORequestJason.put("raining", true);
         measurementDTORequestJason.put("sensor", sensorObject);

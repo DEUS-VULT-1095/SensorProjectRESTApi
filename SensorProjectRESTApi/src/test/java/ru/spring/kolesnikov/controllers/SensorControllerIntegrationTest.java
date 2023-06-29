@@ -27,7 +27,7 @@ public class SensorControllerIntegrationTest {
 
     @AfterEach
     void afterEach() {
-        Sensor sensor = sensorService.findByName("T-1000").get();
+        Sensor sensor = sensorService.findByName("TestName").get();
         sensorRepository.delete(sensor);
     }
 
@@ -35,7 +35,7 @@ public class SensorControllerIntegrationTest {
     void testRegisterSensor_whenValidDetailsProvided_returnsHttpStatusCodeOK() throws JSONException {
         // Arrange
         JSONObject sensorDTOJason = new JSONObject();
-        sensorDTOJason.put("name", "T-1000");
+        sensorDTOJason.put("name", "TestName");
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -47,7 +47,7 @@ public class SensorControllerIntegrationTest {
         // Assert
         Assertions.assertNotNull(response, "Response should not be null.");
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode(), "Http status code should be 200 OK.");
-        Assertions.assertNotNull(sensorService.findByName("T-1000").get(), "Sensor should not be null.");
+        Assertions.assertNotNull(sensorService.findByName("TestName").get(), "Sensor should not be null.");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class SensorControllerIntegrationTest {
     void testRegisterSensor_whenProvidedExistingSensorDTO_thrownSensorNotCreatedException() throws JSONException {
         // Arrange
         JSONObject sensorDTOJason = new JSONObject();
-        sensorDTOJason.put("name", "T-1000");
+        sensorDTOJason.put("name", "TestName");
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

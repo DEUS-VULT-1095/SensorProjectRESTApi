@@ -44,7 +44,7 @@ public class SensorControllerWebLayerTest {
     @BeforeEach
     void beforeEach() throws JsonProcessingException {
         sensorDTO = new SensorDTO();
-        sensorDTO.setName("T-1000");
+        sensorDTO.setName("TestName");
         doNothing().when(sensorService).save(any(Sensor.class));
         doNothing().when(sensorValidator).validate(any(Sensor.class), any(BindingResult.class));
         request = MockMvcRequestBuilders.post("/sensors/registration")

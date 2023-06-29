@@ -55,7 +55,7 @@ public class MeasurementControllerWebLayerTest {
     @BeforeEach
     void setup() throws JsonProcessingException {
         Sensor sensor = new Sensor();
-        sensor.setName("Pro");
+        sensor.setName("TestName");
 
         measurement1 = new Measurement();
         measurement1.setSensor(sensor);

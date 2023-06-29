@@ -54,7 +54,7 @@ public class SensorControllerModuleTest {
             InvocationTargetException, IllegalAccessException {
         // Arrange
         SensorDTO sensorDTO = new SensorDTO();
-        sensorDTO.setName("T-1000");
+        sensorDTO.setName("TestName");
         Method method = SensorController.class.getDeclaredMethod("convertToSensor", SensorDTO.class);
         method.setAccessible(true);
         // Act

@@ -51,7 +51,7 @@ public class MeasurementControllerModuleTest {
     @BeforeEach
     void beforeEach() {
         sensorDTO = new SensorDTO();
-        sensorDTO.setName("Pro");
+        sensorDTO.setName("TestName");
 
         measurementDTO = new MeasurementDTO();
         measurementDTO.setRaining(true);

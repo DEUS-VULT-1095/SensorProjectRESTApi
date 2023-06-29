@@ -21,7 +21,7 @@ public class SensorIntegrationTest {
     @BeforeEach
     void beforeEach() {
         sensor = new Sensor();
-        sensor.setName("T-1000");
+        sensor.setName("TestName");
     }
 
     @Test

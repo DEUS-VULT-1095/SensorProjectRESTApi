@@ -2,25 +2,25 @@ package org.example.dto;
 
 
 public class MeasurementDTO {
-    private float value;
+    private float temperature;
     private boolean raining;
     private SensorDTO sensor;
 
     public MeasurementDTO() {
     }
 
-    public MeasurementDTO(float value, boolean raining, SensorDTO sensor) {
-        this.value = value;
+    public MeasurementDTO(float temperature, boolean raining, SensorDTO sensor) {
+        this.temperature = temperature;
         this.raining = raining;
         this.sensor = sensor;
     }
 
-    public float getValue() {
-        return value;
+    public float getTemperature() {
+        return temperature;
     }
 
-    public void setValue(float value) {
-        this.value = value;
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
     }
 
     public boolean isRaining() {
@@ -42,6 +42,6 @@ public class MeasurementDTO {
     @Override
     public String toString() {
         return "Measurement from sensor - " + sensor.getName() + "\n" +
-                "Value: " + value + "\n" + "Raining: " + raining;
+                "Value: " + temperature + "\n" + "Raining: " + raining;
     }
 }
